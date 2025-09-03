@@ -8,20 +8,26 @@ import com.kay.snippsense.entity.Tag;
 import com.kay.snippsense.entity.Users;
 import com.kay.snippsense.enums.Language;
 
+import jakarta.validation.constraints.NotBlank;
+
 public class SnippetDto {
 	
 	
 	private Long snippetId;
 	
+	@NotBlank(message="Title is required")
 	private String title;
 	
+	@NotBlank(message="Code is required")
 	private String code;
 	
+	@NotBlank(message="Language is required")
 	private Language language;
 	
+	@NotBlank(message="Project is required")
 	private String project;
 	
-	private List<Tag> tags = new ArrayList<>();
+	private List<String> tags = new ArrayList<>();
 	
 	private String errorLog;
 	
@@ -75,11 +81,12 @@ public class SnippetDto {
 		this.project = project;
 	}
 
-	public List<Tag> getTags() {
+
+	public List<String> getTags() {
 		return tags;
 	}
 
-	public void setTags(List<Tag> tags) {
+	public void setTags(List<String> tags) {
 		this.tags = tags;
 	}
 

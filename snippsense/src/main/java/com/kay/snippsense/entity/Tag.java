@@ -24,6 +24,11 @@ public class Tag {
 	@ManyToMany(mappedBy = "tags")
 	private List<Snippet> snippets = new ArrayList<>();
 
+	
+	public Tag(String tagName) {
+	    this.tagName = tagName;
+	}
+	
 	public Long getTagId() {
 		return tagId;
 	}

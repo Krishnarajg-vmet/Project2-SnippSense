@@ -8,10 +8,8 @@ import org.springframework.stereotype.Repository;
 import com.kay.snippsense.entity.Tag;
 
 @Repository
-public interface TagRepository extends JpaRepository<Tag, Long>{
-	
-	Optional<Tag> findByTagName(String tagName);
-	
-	boolean existsByTagName(String tagName);
-
+public interface TagRepository extends JpaRepository<Tag, Long> {
+    Optional<Tag> findByTagName(String tagName);
+    Optional<Tag> findByTagNameIgnoreCase(String name);
+    boolean existsByTagName(String tagName);
 }

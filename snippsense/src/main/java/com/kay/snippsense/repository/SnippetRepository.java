@@ -25,5 +25,7 @@ public interface SnippetRepository extends JpaRepository<Snippet, Long> {
 	
     List<Snippet> findByTitleContainingIgnoreCaseOrErrorLogContainingIgnoreCase(String title, String errorLog);
 
+	List<Snippet> findByTitleContainingIgnoreCase(String title);
+
 
 }

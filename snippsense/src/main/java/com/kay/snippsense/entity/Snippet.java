@@ -7,6 +7,7 @@ import java.util.List;
 import com.kay.snippsense.enums.Language;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 
 @Entity
 @Table(name="snippets")
@@ -17,16 +18,20 @@ public class Snippet {
 	@Column(name="snippet_id")
 	private Long snippetId;
 	
+	@NotBlank(message="Title is required")
 	@Column(name="title", nullable = false)
 	private String title;
 	
+	@NotBlank(message="Code is required")
 	@Column(name="code", nullable = false, length=5000)
 	private String code;
 	
+	@NotBlank(message="Language is required")
 	@Enumerated(EnumType.STRING)
 	@Column(name="language", nullable = false)
 	private Language language;
 	
+	@NotBlank(message="Project Name is required")
 	@Column(name="project", nullable=false)
 	private String project;
 	

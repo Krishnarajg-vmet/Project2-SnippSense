@@ -2,14 +2,19 @@ package com.kay.snippsense.dto;
 
 import java.time.LocalDateTime;
 
+import jakarta.validation.constraints.*;
+
 public class UsersDto {
 	
 	private Long userId;
 	
+	@NotBlank(message="Username is required")
 	private String username;
 	
+	@NotBlank(message="Password is required")
 	private String password;
 	
+	@NotBlank(message="Fullname is required")
 	private String fullname;
 	
 	private LocalDateTime createdAt;

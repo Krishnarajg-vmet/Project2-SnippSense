@@ -6,7 +6,10 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.*;
 
 @Entity
 @Table(name="users")
@@ -17,9 +20,13 @@ public class Users {
 	@Column(name="user_id")
 	private Long userId;
 	
+	@NotBlank(message = "Username is required")
+	@Size(min=4, max=10)
 	@Column(name="username", unique=true, nullable = false)
 	private String username;
 	
+	@NotBlank(message="Password is Required")
+	@Size(min=3)
 	@Column(name="password", nullable = false)
 	private String password;
 	
@@ -34,7 +41,17 @@ public class Users {
 	
 	@Column(name="is_active")
 	private Boolean isActive;
+	
+	 @PrePersist
+	    protected void onCreate() {
+	        this.createdAt = LocalDateTime.now();
+	    }
 
+	    @PreUpdate
+	    protected void onUpdate() {
+	        this.lastModified = LocalDateTime.now();
+	    }
+	    
 	public Long getUserId() {
 		return userId;
 	}
